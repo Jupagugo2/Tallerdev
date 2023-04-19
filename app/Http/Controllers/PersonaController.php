@@ -20,6 +20,7 @@ class PersonaController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles('admin');
+        
         $persona = Persona::orderBy('id','DESC')->paginate(10);
         
         return view('persona.index',compact('persona')); 
